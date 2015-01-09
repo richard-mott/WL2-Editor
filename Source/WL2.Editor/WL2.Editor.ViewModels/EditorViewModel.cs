@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
 using System.Xml.Linq;
 using Assisticant;
@@ -14,9 +15,9 @@ namespace WL2.Editor.ViewModels
 
         public event Action<object, RequestSaveFileEventArgs> RequestSaveFileEvent;
 
-        public IEnumerable<Character> Characters
+        public IEnumerable<CharacterViewModel> Characters
         {
-            get { return _characters; }
+            get { return _characters.Select(character => new CharacterViewModel(character)); }
         }
 
         public ICommand OpenSaveFile
