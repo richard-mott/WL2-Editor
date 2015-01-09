@@ -1,8 +1,10 @@
 ﻿<Application x:Class="WL2.Editor.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:WL2.Editor.ViewModels;assembly=WL2.Editor.ViewModels"
+             xmlns:v="clr-namespace:WL2.Editor.Views;assembly=WL2.Editor.Views"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <vm:ViewModelLocator x:Key="Locator" />
     </Application.Resources>
 </Application>

@@ -101,6 +101,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WL2.Editor.ViewModels\WL2.Editor.ViewModels.csproj">
+      <Project>{237f8120-1ede-425f-9f94-8e2ba7f18a70}</Project>
+      <Name>WL2.Editor.ViewModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WL2.Editor.Views\WL2.Editor.Views.csproj">
+      <Project>{7fc560b1-e9e1-49c2-8d03-7260ef9620d4}</Project>
+      <Name>WL2.Editor.Views</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
