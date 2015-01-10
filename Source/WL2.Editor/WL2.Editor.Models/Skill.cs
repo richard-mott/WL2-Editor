@@ -8,9 +8,11 @@ namespace WL2.Editor.Models
     public class Skill : IStatistic
     {
         private readonly Observable<int> _currentValue = new Observable<int>(0);
+        private readonly int _initialValue;
         private readonly XElement _valueElement;
         
         public string Name { get; private set; }
+        public string Image { get; private set; }
         public SkillCategory Category {get; private set;}
 
         public int CurrentValue
@@ -19,21 +21,21 @@ namespace WL2.Editor.Models
             set { _currentValue.Value = value; }
         }
 
+        public bool IsDirty
+        {
+            get { return CurrentValue != _initialValue; }
+        }
+
         public Skill(XElement skillData)
         {
             _valueElement = GetValueElement(skillData);
 
             Name = ParseName(skillData);
+            Image = ParseImage(skillData);
             Category = ParseCategory(skillData);
 
-            var parsedValue = ParseValue(skillData);
-
-            if (parsedValue == -1)
-            {
-                throw new XmlException("Invalid value for skill.");
-            }
-            
-            CurrentValue = Statistics.SkillDisplayValues[parsedValue];
+            _initialValue = ParseValue(skillData);
+            CurrentValue = _initialValue;
         }
 
         public void Save()
@@ -64,6 +66,16 @@ namespace WL2.Editor.Models
             return Statistics.SkillNames[nameElement.Value];
         }
 
+        private string ParseImage(XElement skillData)
+        {
+            var nameElement = skillData.Element("Key");
+
+            if (nameElement == null)
+                throw new XmlException("Attribute data requires a Key element.");
+
+            return "skill_" + nameElement.Value;
+        }
+
         private SkillCategory ParseCategory(XElement skillData)
         {
             var nameElement = skillData.Element("Key");
@@ -84,7 +96,7 @@ namespace WL2.Editor.Models
                 throw new XmlException("Invalid value for skill.");
             }
 
-            return value;
+            return Statistics.SkillDisplayValues[value];
         }
     }
 }

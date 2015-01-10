@@ -6,6 +6,11 @@ namespace WL2.Editor.ViewModels
 {
     public class CharacterViewModel
     {
+        private const int AttributeMinimum = 1;
+        private const int AttributeMaximum = 10;
+        private const int SkillMinimum = 0;
+        private const int SkillMaximum = 10;
+
         private readonly Character _character;
 
         public CharacterViewModel(Character character)
@@ -20,15 +25,21 @@ namespace WL2.Editor.ViewModels
 
         public IEnumerable<StatisticViewModel> Attributes
         {
-            get { return _character.Attributes.Select(attribute => new StatisticViewModel(attribute)); }
+            get
+            {
+                return _character.Attributes
+                    .Select(attribute => new StatisticViewModel(attribute, AttributeMinimum, AttributeMaximum));
+            }
         }
 
         public IEnumerable<StatisticViewModel> WeaponSkills
         {
             get
             {
-                var weaponSkills = _character.Skills[SkillCategory.Weapon];
-                return weaponSkills.Select(skill => new StatisticViewModel(skill));
+                return _character.Skills
+                    .Where(skill => skill.Category == SkillCategory.Weapon)
+                    .OrderBy(skill => skill.Name)
+                    .Select(skill => new StatisticViewModel(skill, SkillMinimum, SkillMaximum));
             }
         }
 
@@ -36,8 +47,10 @@ namespace WL2.Editor.ViewModels
         {
             get
             {
-                var generalSkills = _character.Skills[SkillCategory.General];
-                return generalSkills.Select(skill => new StatisticViewModel(skill));
+                return _character.Skills
+                    .Where(skill => skill.Category == SkillCategory.General)
+                    .OrderBy(skill => skill.Name)
+                    .Select(skill => new StatisticViewModel(skill, SkillMinimum, SkillMaximum));
             }
         }
 
@@ -45,8 +58,10 @@ namespace WL2.Editor.ViewModels
         {
             get
             {
-                var knowledgeSkills = _character.Skills[SkillCategory.Knowledge];
-                return knowledgeSkills.Select(skill => new StatisticViewModel(skill));
+                return _character.Skills
+                    .Where(skill => skill.Category == SkillCategory.Knowledge)
+                    .OrderBy(skill => skill.Name)
+                    .Select(skill => new StatisticViewModel(skill, SkillMinimum, SkillMaximum));
             }
         }
 
@@ -54,8 +69,10 @@ namespace WL2.Editor.ViewModels
         {
             get
             {
-                var miscellaneousSkills = _character.Skills[SkillCategory.Miscellaneous];
-                return miscellaneousSkills.Select(skill => new StatisticViewModel(skill));
+                return _character.Skills
+                    .Where(skill => skill.Category == SkillCategory.Miscellaneous)
+                    .OrderBy(skill => skill.Name)
+                    .Select(skill => new StatisticViewModel(skill, SkillMinimum, SkillMaximum));
             }
         }
     }

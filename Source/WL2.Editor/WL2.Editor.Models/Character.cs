@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -7,19 +8,11 @@ namespace WL2.Editor.Models
     public class Character
     {
         private readonly List<Attribute> _attributes = new List<Attribute>();
-
-        private readonly Dictionary<SkillCategory, IList<Skill>> _skills = 
-            new Dictionary<SkillCategory, IList<Skill>>
-        {
-            {SkillCategory.Weapon, new List<Skill>()},
-            {SkillCategory.General, new List<Skill>()},
-            {SkillCategory.Knowledge, new List<Skill>()},
-            {SkillCategory.Miscellaneous, new List<Skill>()}
-        };
+        private readonly List<Skill> _skills = new List<Skill>();
 
         public string Name { get; private set; }
 
-        public Dictionary<SkillCategory, IList<Skill>> Skills
+        public IEnumerable<Skill> Skills
         {
             get { return _skills; }
         }
@@ -29,11 +22,36 @@ namespace WL2.Editor.Models
             get { return _attributes; }
         }
 
+        public bool IsDirty
+        {
+            get
+            {
+                return _attributes.Any(attribute => attribute.IsDirty)
+                       || _skills.Any(skill => skill.IsDirty);
+            }
+        }
+
         public Character(XElement characterData)
         {
             Name = ParseName(characterData);
             ParseAttributes(characterData);
             ParseSkills(characterData);
+        }
+
+        public void Save()
+        {
+            SaveDirtyStatistics(_attributes);
+            SaveDirtyStatistics(_skills);
+        }
+
+        private void SaveDirtyStatistics(IEnumerable<IStatistic> statistics)
+        {
+            var dirtyStatistics = statistics.Where(statistic => statistic.IsDirty);
+
+            foreach (var statistic in dirtyStatistics)
+            {
+                statistic.Save();
+            }
         }
 
         private string ParseName(XElement characterData)
@@ -92,7 +110,7 @@ namespace WL2.Editor.Models
             {
                 var skill = new Skill(skillData);
 
-                _skills[skill.Category].Add(skill);
+                _skills.Add(skill);
             }
         }
     }

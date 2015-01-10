@@ -8,6 +8,7 @@
              xmlns:assisticant="clr-namespace:Assisticant;assembly=Assisticant.XAML"
              Loaded="EditorView_Loaded"
              Unloaded="EditorView_Unloaded"
+             Background="#000000"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     
@@ -24,17 +25,20 @@
     <DockPanel LastChildFill="True">
         <Menu DockPanel.Dock="Top" IsMainMenu="True">
             <MenuItem Header="_File">
-                <MenuItem Header="_Open Save File" Command="{Binding OpenSaveFile}"/>
-                <MenuItem Header="_Save" />
-                <Separator />
-                <MenuItem Header="E_xit" />
+                <MenuItem Header="_Open Save File" Command="{Binding OpenFile}" />
+                <MenuItem Header="_Save" Command="{Binding SaveFile}" />
             </MenuItem>
         </Menu>
         
-        <TabControl ItemsSource="{Binding Characters}">
+        <TabControl ItemsSource="{Binding Characters}" Background="#000000">
             <TabControl.ItemContainerStyle>
                 <Style TargetType="TabItem">
                     <Setter Property="Header" Value="{Binding Name}" />
+                    <Setter Property="FontFamily" Value="Courier New" />
+                    <Setter Property="FontSize" Value="24" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="Foreground" Value="#FF9635" />
+                    <Setter Property="Background" Value="#000000" />
                 </Style>
             </TabControl.ItemContainerStyle>
             <TabControl.ContentTemplateSelector>

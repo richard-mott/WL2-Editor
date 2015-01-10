@@ -8,9 +8,11 @@ namespace WL2.Editor.Models
     public class Attribute : IStatistic
     {
         private readonly Observable<int> _currentValue = new Observable<int>(0);
+        private readonly int _initialValue;
         private readonly XElement _valueElement;
         
         public string Name { get; private set; }
+        public string Image { get; private set; }
 
         public int CurrentValue
         {
@@ -18,13 +20,27 @@ namespace WL2.Editor.Models
             set { _currentValue.Value = value; }
         }
 
+        public bool IsDirty
+        {
+            get { return CurrentValue != _initialValue; }
+        }
+
+        public Attribute(string name, string image, int currentValue)
+        {
+            Name = name;
+            Image = image;
+            CurrentValue = currentValue;
+        }
+
         public Attribute(XElement attributeData)
         {
             _valueElement = GetValueElement(attributeData);
             
             Name = ParseName(attributeData);
+            Image = ParseImage(attributeData);
 
-            CurrentValue = ParseValue(attributeData);
+            _initialValue = ParseValue(attributeData);
+            CurrentValue = _initialValue;
         }
 
         public void Save()
@@ -50,6 +66,16 @@ namespace WL2.Editor.Models
                 throw new XmlException("Attribute data requires a Key element.");
 
             return Statistics.AttributeNames[nameElement.Value];
+        }
+
+        private string ParseImage(XElement attributeData)
+        {
+            var nameElement = attributeData.Element("Key");
+
+            if (nameElement == null)
+                throw new XmlException("Attribute data requires a Key element.");
+
+            return "attribute_" + nameElement.Value + ".png";
         }
 
         private int ParseValue(XElement attributeData)

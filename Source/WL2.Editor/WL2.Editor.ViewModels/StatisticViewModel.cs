@@ -1,4 +1,7 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.IO;
+using System.Windows.Input;
+using System.Windows.Media.Imaging;
 using Assisticant;
 using WL2.Editor.Models;
 
@@ -7,16 +10,24 @@ namespace WL2.Editor.ViewModels
     public class StatisticViewModel
     {
         private readonly IStatistic _statistic;
-        
-        public StatisticViewModel(IStatistic statistic)
+        private readonly int _minimumValue = 0;
+        private readonly int _maximumValue = 10;
+
+        public StatisticViewModel(IStatistic statistic, int minimumValue, int maximumValue)
         {
             _statistic = statistic;
-            IsDirty = false;
+            _minimumValue = minimumValue;
+            _maximumValue = maximumValue;
         }
 
         public string Name
         {
             get { return _statistic.Name; }
+        }
+
+        public string Image 
+        {
+            get { return Path.Combine(Environment.CurrentDirectory, "Images", _statistic.Image); }
         }
 
         public int CurrentValue
@@ -25,18 +36,15 @@ namespace WL2.Editor.ViewModels
             set { _statistic.CurrentValue = value; }
         }
 
-        public bool IsDirty { get; private set; }
-
         public ICommand Increment
         {
             get
             {
                 return MakeCommand
-                    .When(() => CurrentValue < 10)
+                    .When(() => CurrentValue < _maximumValue)
                     .Do(() =>
                     {
                         CurrentValue++;
-                        IsDirty = true;
                     });
             }
         }
@@ -46,20 +54,11 @@ namespace WL2.Editor.ViewModels
             get
             {
                 return MakeCommand
-                    .When(() => CurrentValue > 0)
+                    .When(() => CurrentValue > _minimumValue)
                     .Do(() =>
                     {
                         CurrentValue--;
-                        IsDirty = true;
                     });
-            }
-        }
-
-        public void Save()
-        {
-            if (IsDirty)
-            {
-                _statistic.Save();
             }
         }
     }

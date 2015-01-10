@@ -12,11 +12,6 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            
-        </Grid.ColumnDefinitions>
-        
-        <TextBlock Grid.Row="0" Text="{Binding Path=Name, StringFormat=Name: {0}}" />
         
         <ItemsControl Grid.Row="1" ItemsSource="{Binding Attributes}">
             <ItemsControl.ItemTemplateSelector>
