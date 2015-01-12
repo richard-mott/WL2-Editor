@@ -1,4 +1,6 @@
-﻿using Assisticant;
+﻿using System.Linq;
+using System.Xml.Linq;
+using Assisticant;
 using WL2.Editor.Models;
 
 namespace WL2.Editor.ViewModels
@@ -9,7 +11,9 @@ namespace WL2.Editor.ViewModels
 
         public ViewModelLocator()
         {
-            _saveGame = new SaveGame();
+            _saveGame = DesignMode 
+                ? new SaveGame(LoadSampleData()) 
+                : new SaveGame();
         }
 
         public object EditorViewModel
@@ -26,6 +30,21 @@ namespace WL2.Editor.ViewModels
                         new Attribute("Intelligence", "attribute_intelligence.png", 6), 
                         1, 10));
             }
+        }
+
+        public object CharacterViewModel
+        {
+            get
+            {
+                return (DesignMode)
+                    ? new CharacterViewModel(_saveGame.Characters.First())
+                    : null;
+            }
+        }
+
+        private XDocument LoadSampleData()
+        {
+            return XDocument.Parse(Properties.Resources.SampleData);
         }
     }
 }

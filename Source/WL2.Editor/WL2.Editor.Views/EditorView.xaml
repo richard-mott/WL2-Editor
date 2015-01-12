@@ -10,7 +10,7 @@
              Unloaded="EditorView_Unloaded"
              Background="#000000" Name="View"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DataContext="{Binding EditorViewModel, Source={StaticResource Locator}}">
     
     <UserControl.Resources>
         <DataTemplate DataType="{x:Type vm:CharacterViewModel}">
