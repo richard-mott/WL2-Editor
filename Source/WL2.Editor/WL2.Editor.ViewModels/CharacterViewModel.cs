@@ -23,6 +23,26 @@ namespace WL2.Editor.ViewModels
             get { return _character.Name; }
         }
 
+        public int InitialAttributePoints
+        {
+            get { return _character.InitialAttributePoints; }
+        }
+
+        public int CurrentAttributePoints
+        {
+            get { return _character.CurrentAttributePoints; }
+        }
+
+        public int InitialSkillPoints
+        {
+            get { return _character.InitialSkillPoints; }
+        }
+
+        public int CurrentSkillPoints
+        {
+            get { return _character.CurrentSkillPoints; }
+        }
+
         public IEnumerable<StatisticViewModel> Attributes
         {
             get

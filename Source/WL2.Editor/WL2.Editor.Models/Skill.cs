@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Xml;
 using System.Xml.Linq;
 using Assisticant.Fields;
@@ -7,6 +8,8 @@ namespace WL2.Editor.Models
 {
     public class Skill : IStatistic
     {
+        public Action<object, StatisticChangedEventArgs> SkillChanged;
+ 
         private readonly Observable<int> _currentValue = new Observable<int>(0);
         private readonly int _initialValue;
         private readonly XElement _valueElement;
@@ -18,7 +21,14 @@ namespace WL2.Editor.Models
         public int CurrentValue
         {
             get { return _currentValue.Value; }
-            set { _currentValue.Value = value; }
+            set
+            {
+                if (_currentValue.Value != value)
+                {
+                    RaiseStatisticChanged(_currentValue.Value, value);
+                    _currentValue.Value = value;
+                }
+            }
         }
 
         public bool IsDirty
@@ -97,6 +107,14 @@ namespace WL2.Editor.Models
             }
 
             return Statistics.SkillDisplayValues[value];
+        }
+        
+        private void RaiseStatisticChanged(int oldValue, int newValue)
+        {
+            if (SkillChanged != null)
+            {
+                SkillChanged(this, new StatisticChangedEventArgs(oldValue, newValue));
+            }
         }
     }
 }

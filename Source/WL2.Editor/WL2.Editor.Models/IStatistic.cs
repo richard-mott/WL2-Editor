@@ -6,6 +6,7 @@
         string Image { get; }
         int CurrentValue { get; set; }
         bool IsDirty { get; }
+ 
         void Save();
     }
 }
