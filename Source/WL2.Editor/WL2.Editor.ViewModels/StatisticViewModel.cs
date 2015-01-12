@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Assisticant;
 using WL2.Editor.Models;
@@ -25,9 +26,13 @@ namespace WL2.Editor.ViewModels
             get { return _statistic.Name; }
         }
 
-        public string Image 
+        public string Image
         {
-            get { return Path.Combine(Environment.CurrentDirectory, "Images", _statistic.Image); }
+            get
+            {
+                const string imagePath = "pack://application:,,,/WL2.Editor.Views;component/Images/";
+                return imagePath + _statistic.Image;
+            }
         }
 
         public int CurrentValue
