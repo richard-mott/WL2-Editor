@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:v="clr-namespace:WL2.Editor.Views;assembly=WL2.Editor.Views"
         Title="Wasteland 2 Save Game Editor" 
-        SizeToContent="WidthAndHeight" 
-        MinHeight="300" MinWidth="500"
+        ResizeMode="NoResize"
+        Height="714" Width="1468" Name="Window"
         SnapsToDevicePixels="True">
     <Grid>
         <v:EditorView DataContext="{Binding EditorViewModel, Source={StaticResource Locator}}" />

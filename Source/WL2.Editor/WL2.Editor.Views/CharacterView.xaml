@@ -9,7 +9,7 @@
              mc:Ignorable="d" 
              Background="#000000"
              d:DataContext="{Binding CharacterViewModel, Source={StaticResource Locator}}">
-    
+
     <UserControl.Resources>
         <DataTemplate DataType="{x:Type vm:StatisticViewModel}">
             <v:StatisticView />
@@ -22,12 +22,12 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        
+
         <StackPanel Grid.Column="0">
             <TextBlock Text="Attributes" 
                    FontFamily="Courier New" FontSize="18" FontWeight="Bold" 
@@ -53,7 +53,7 @@
                 </ItemsControl.ItemTemplateSelector>
             </ItemsControl>
         </StackPanel>
-        
+
         <StackPanel Grid.Column="1">
             <TextBlock Text="Weapon Skills" 
                    FontFamily="Courier New" FontSize="18" FontWeight="Bold" 
@@ -67,7 +67,7 @@
                 </ItemsControl.ItemTemplateSelector>
             </ItemsControl>
         </StackPanel>
-        
+
         <StackPanel Grid.Column="2">
             <TextBlock Text="General Skills" 
                    FontFamily="Courier New" FontSize="18" FontWeight="Bold" 
@@ -96,24 +96,40 @@
             </ItemsControl>
         </StackPanel>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Margin="6 3 3 6"
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <TextBlock Margin="6 3 3 6" VerticalAlignment="Center"
                    FontFamily="Courier New" FontSize="18" FontWeight="Bold" Foreground="#FF9635">
-            <TextBlock.Text>
-                <MultiBinding StringFormat="Attribute Points: {0} / {1}">
-                    <Binding Path="CurrentAttributePoints" />
-                    <Binding Path="InitialAttributePoints" />
-                </MultiBinding>
-            </TextBlock.Text>
-        </TextBlock>
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="Attribute Points: {0} / {1}">
+                        <Binding Path="CurrentAttributePoints" />
+                        <Binding Path="InitialAttributePoints" />
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
 
-        <TextBlock Grid.Row="1" Grid.Column="1" Margin="3 3 3 6"
+            <Button Command="{Binding ResetAttributes}"
+                    FontSize="18" FontWeight="Bold" Padding="6" Margin="3 3 3 6">Reset</Button>
+            <Button Command="{Binding RestoreAttributes}"
+                    FontSize="18" FontWeight="Bold" Padding="6" Margin="3 3 6 6">Restore</Button>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Button Command="{Binding RestoreSkills}"
+                    FontSize="18" FontWeight="Bold" Padding="6" Margin="3 3 6 6">Restore</Button>
+            <Button Command="{Binding ResetSkills}"
+                    FontSize="18" FontWeight="Bold" Padding="6" Margin="3 3 3 6">Reset</Button>
+            
+            <TextBlock Margin="6 3 3 6" VerticalAlignment="Center"
                    FontFamily="Courier New" FontSize="18" FontWeight="Bold" Foreground="#FF9635">
-            <TextBlock.Text>
-                <MultiBinding StringFormat="Skill Points: {0} / {1}">
-                    <Binding Path="CurrentSkillPoints" />
-                    <Binding Path="InitialSkillPoints" />
-                </MultiBinding>
-            </TextBlock.Text>
-        </TextBlock>
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="Skill Points: {0} / {1}">
+                        <Binding Path="CurrentSkillPoints" />
+                        <Binding Path="InitialSkillPoints" />
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+        </StackPanel>
+
     </Grid>
 </UserControl>

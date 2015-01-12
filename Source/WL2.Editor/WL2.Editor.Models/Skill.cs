@@ -55,6 +55,15 @@ namespace WL2.Editor.Models
             _valueElement.Value = saveValue.ToString(CultureInfo.InvariantCulture);
         }
 
+        public void Reset()
+        {
+            CurrentValue = 0;
+        }
+
+        public void Restore()
+        {
+            CurrentValue = _initialValue;
+        }
 
         private XElement GetValueElement(XElement skillData)
         {

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
@@ -97,6 +98,38 @@ namespace WL2.Editor.Models
             SaveAvailableSkillPoints();
         }
 
+        public void ResetAttributes()
+        {
+            foreach (var attribute in _attributes)
+            {
+                attribute.Reset();
+            }
+        }
+
+        public void RestoreAttributes()
+        {
+            foreach (var attribute in _attributes)
+            {
+                attribute.Restore();
+            }
+        }
+
+        public void ResetSkills()
+        {
+            foreach (var skill in _skills)
+            {
+                skill.Reset();
+            }
+        }
+
+        public void RestoreSkills()
+        {
+            foreach (var skill in _skills)
+            {
+                skill.Restore();
+            }
+        }
+
         private void SaveDirtyStatistics(IEnumerable<IStatistic> statistics)
         {
             var dirtyStatistics = statistics.Where(statistic => statistic.IsDirty);
@@ -109,9 +142,8 @@ namespace WL2.Editor.Models
 
         private void SaveAvailableAttributePoints()
         {
-            AvailableAttributePoints.CurrentValue = CurrentAttributePoints < InitialAttributePoints
-                ? InitialAttributePoints - CurrentAttributePoints
-                : 0;
+            AvailableAttributePoints.CurrentValue = 
+                Math.Max(InitialAttributePoints - CurrentAttributePoints, 0);
 
             if (AvailableAttributePoints.IsDirty)
             {
@@ -121,9 +153,8 @@ namespace WL2.Editor.Models
 
         private void SaveAvailableSkillPoints()
         {
-            AvailableSkillPoints.CurrentValue = CurrentSkillPoints < InitialSkillPoints
-                ? InitialSkillPoints - CurrentSkillPoints
-                : 0;
+            AvailableSkillPoints.CurrentValue =
+                Math.Max(InitialSkillPoints - CurrentSkillPoints, 0);
 
             if (AvailableSkillPoints.IsDirty)
             {

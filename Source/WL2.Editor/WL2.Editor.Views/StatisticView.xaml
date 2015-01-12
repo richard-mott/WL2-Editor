@@ -12,15 +12,6 @@
     
     <UserControl.Resources>
         <converters:StatisticFillValueConverter x:Key="FillConverter" FilledBrush="#576C73" EmptyBrush="#313131" />
-        <Style x:Key="FocusVisual">
-        	<Setter Property="Control.Template">
-        		<Setter.Value>
-        			<ControlTemplate>
-        				<Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
-        			</ControlTemplate>
-        		</Setter.Value>
-        	</Setter>
-        </Style>
         
     </UserControl.Resources>
     

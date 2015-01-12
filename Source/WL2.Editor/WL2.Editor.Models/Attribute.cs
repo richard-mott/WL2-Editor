@@ -58,6 +58,16 @@ namespace WL2.Editor.Models
             _valueElement.Value = CurrentValue.ToString(CultureInfo.InvariantCulture);
         }
 
+        public void Reset()
+        {
+            CurrentValue = 1;
+        }
+
+        public void Restore()
+        {
+            CurrentValue = _initialValue;
+        }
+
         private XElement GetValueElement(XElement attributeData)
         {
             var valueElement = attributeData.Element("Value");

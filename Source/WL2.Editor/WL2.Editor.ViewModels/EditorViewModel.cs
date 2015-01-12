@@ -46,6 +46,42 @@ namespace WL2.Editor.ViewModels
             }
         }
 
+        public ICommand ResetAllAttributes
+        {
+            get
+            {
+                return MakeCommand
+                    .Do(() => _saveGame.ResetAllAttributes());
+            }
+        }
+
+        public ICommand RestoreAllAttributes
+        {
+            get
+            {
+                return MakeCommand
+                    .Do(() => _saveGame.RestoreAllAttributes());
+            }
+        }
+
+        public ICommand ResetAllSkills
+        {
+            get
+            {
+                return MakeCommand
+                    .Do(() => _saveGame.ResetAllSkills());
+            }
+        }
+
+        public ICommand RestoreAllSkills
+        {
+            get
+            {
+                return MakeCommand
+                    .Do(() => _saveGame.RestoreAllSkills());
+            }
+        }
+
         private void Open()
         {
             var requestArgs = new RequestSaveFileEventArgs();

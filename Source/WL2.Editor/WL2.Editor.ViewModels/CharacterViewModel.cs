@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Input;
+using Assisticant;
 using WL2.Editor.Models;
 
 namespace WL2.Editor.ViewModels
@@ -93,6 +95,42 @@ namespace WL2.Editor.ViewModels
                     .Where(skill => skill.Category == SkillCategory.Miscellaneous)
                     .OrderBy(skill => skill.Name)
                     .Select(skill => new StatisticViewModel(skill, SkillMinimum, SkillMaximum));
+            }
+        }
+
+        public ICommand ResetAttributes
+        {
+            get
+            {
+                return MakeCommand
+                    .Do(() => _character.ResetAttributes());
+            }
+        }
+
+        public ICommand RestoreAttributes
+        {
+            get
+            {
+                return MakeCommand
+                    .Do(() => _character.RestoreAttributes());
+            }
+        }
+
+        public ICommand ResetSkills
+        {
+            get
+            {
+                return MakeCommand
+                    .Do(() => _character.ResetSkills());
+            }
+        }
+
+        public ICommand RestoreSkills
+        {
+            get
+            {
+                return MakeCommand
+                    .Do(() => _character.RestoreSkills());
             }
         }
     }

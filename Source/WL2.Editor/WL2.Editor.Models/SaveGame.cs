@@ -40,6 +40,7 @@ namespace WL2.Editor.Models
         {
             _fileName = fileName;
             _document = XDocument.Load(fileName);
+            _characters.Clear();
 
             var characters = _document.Descendants("PcData");
 
@@ -59,6 +60,38 @@ namespace WL2.Editor.Models
             }
 
             _document.Save(_fileName);
+        }
+
+        public void ResetAllAttributes()
+        {
+            foreach (var character in _characters)
+            {
+                character.ResetAttributes();
+            }
+        }
+
+        public void RestoreAllAttributes()
+        {
+            foreach (var character in _characters)
+            {
+                character.RestoreAttributes();
+            }
+        }
+
+        public void ResetAllSkills()
+        {
+            foreach (var character in _characters)
+            {
+                character.ResetSkills();
+            }
+        }
+
+        public void RestoreAllSkills()
+        {
+            foreach (var character in _characters)
+            {
+                character.RestoreSkills();
+            }
         }
     }
 }
