@@ -23,7 +23,7 @@ namespace WL2.Editor.ViewModels
             {
                 return ViewModel(() =>
                     new StatisticViewModel(
-                        new Attribute("Intelligence", "attribute_intelligence", 6), 
+                        new Attribute("Intelligence", "attribute_intelligence.png", 6), 
                         1, 10));
             }
         }

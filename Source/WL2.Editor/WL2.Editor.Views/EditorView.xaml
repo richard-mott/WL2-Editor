@@ -8,7 +8,7 @@
              xmlns:assisticant="clr-namespace:Assisticant;assembly=Assisticant.XAML"
              Loaded="EditorView_Loaded"
              Unloaded="EditorView_Unloaded"
-             Background="#000000"
+             Background="#000000" Name="View"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     
@@ -30,6 +30,7 @@
             </MenuItem>
         </Menu>
         
+        <TextBlock DockPanel.Dock="Bottom" Text="{Binding ElementName=View, Path=ActualWidth}" Foreground="#FFFFFF" />
         <TabControl ItemsSource="{Binding Characters}" Background="#000000">
             <TabControl.ItemContainerStyle>
                 <Style TargetType="TabItem">

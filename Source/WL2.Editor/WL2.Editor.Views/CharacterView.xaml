@@ -8,15 +8,79 @@
              d:DesignHeight="300" d:DesignWidth="300">
     
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
         
-        <ItemsControl Grid.Row="1" ItemsSource="{Binding Attributes}">
-            <ItemsControl.ItemTemplateSelector>
-                <assisticant:ViewSelector />
-            </ItemsControl.ItemTemplateSelector>
-        </ItemsControl>
+        <StackPanel Grid.Column="0">
+            <TextBlock Text="Attributes" 
+                   FontFamily="Courier New" FontSize="18" FontWeight="Bold" 
+                   Foreground="#FF9635" Background="#576C73" Padding="3"
+                   Margin="6 6 6 3" HorizontalAlignment="Stretch" TextAlignment="Center" />
+
+            <ItemsControl ItemsSource="{Binding Attributes}"
+                      Margin="6 3 6 6">
+                <ItemsControl.ItemTemplateSelector>
+                    <assisticant:ViewSelector />
+                </ItemsControl.ItemTemplateSelector>
+            </ItemsControl>
+
+            <TextBlock Text="Miscellaneous Skills" 
+                   FontFamily="Courier New" FontSize="18" FontWeight="Bold" 
+                   Foreground="#FF9635" Background="#576C73" Padding="3"
+                   Margin="6 6 6 3" HorizontalAlignment="Stretch" TextAlignment="Center" />
+
+            <ItemsControl ItemsSource="{Binding MiscellaneousSkills}"
+                      Margin="6 3 6 6">
+                <ItemsControl.ItemTemplateSelector>
+                    <assisticant:ViewSelector />
+                </ItemsControl.ItemTemplateSelector>
+            </ItemsControl>
+        </StackPanel>
+        
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Weapon Skills" 
+                   FontFamily="Courier New" FontSize="18" FontWeight="Bold" 
+                   Foreground="#FF9635" Background="#576C73" Padding="3"
+                   Margin="6 6 6 3" HorizontalAlignment="Stretch" TextAlignment="Center" />
+
+            <ItemsControl ItemsSource="{Binding WeaponSkills}"
+                      Margin="6 3 6 6">
+                <ItemsControl.ItemTemplateSelector>
+                    <assisticant:ViewSelector />
+                </ItemsControl.ItemTemplateSelector>
+            </ItemsControl>
+        </StackPanel>
+        
+        <StackPanel Grid.Column="2">
+            <TextBlock Text="General Skills" 
+                   FontFamily="Courier New" FontSize="18" FontWeight="Bold" 
+                   Foreground="#FF9635" Background="#576C73" Padding="3"
+                   Margin="6 6 6 3" HorizontalAlignment="Stretch" TextAlignment="Center" />
+
+            <ItemsControl ItemsSource="{Binding GeneralSkills}"
+                      Margin="6 3 6 6">
+                <ItemsControl.ItemTemplateSelector>
+                    <assisticant:ViewSelector />
+                </ItemsControl.ItemTemplateSelector>
+            </ItemsControl>
+        </StackPanel>
+
+        <StackPanel Grid.Column="3">
+            <TextBlock Text="Knowledge Skills" 
+                   FontFamily="Courier New" FontSize="18" FontWeight="Bold" 
+                   Foreground="#FF9635" Background="#576C73" Padding="3"
+                   Margin="6 6 6 3" HorizontalAlignment="Stretch" TextAlignment="Center" />
+
+            <ItemsControl ItemsSource="{Binding KnowledgeSkills}"
+                      Margin="6 3 6 6">
+                <ItemsControl.ItemTemplateSelector>
+                    <assisticant:ViewSelector />
+                </ItemsControl.ItemTemplateSelector>
+            </ItemsControl>
+        </StackPanel>
     </Grid>
 </UserControl>

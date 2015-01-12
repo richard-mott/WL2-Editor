@@ -15,6 +15,17 @@ namespace WL2.Editor.Models
             {"charisma", "Charisma"}
         };
 
+        public static readonly Dictionary<string, int> AttributeOrder = new Dictionary<string, int>
+        {
+            {"Coordination", 0},
+            {"Luck", 1},
+            {"Awareness", 2},
+            {"Strength", 3},
+            {"Speed", 4},
+            {"Intelligence", 5},
+            {"Charisma", 6}
+        };
+
         public static readonly Dictionary<string, string> SkillNames = new Dictionary<string, string>
         {
             // Weapon Skills

@@ -11,6 +11,21 @@ namespace WL2.Editor.Models
         private string _fileName;
         private XDocument _document;
 
+        public SaveGame()
+        {}
+
+        public SaveGame(XDocument saveData)
+        {
+            _document = saveData;
+
+            var characters = _document.Descendants("PcData");
+
+            foreach (var characterData in characters)
+            {
+                _characters.Add(new Character(characterData));
+            }
+        }
+
         public IEnumerable<Character> Characters
         {
             get { return _characters; }

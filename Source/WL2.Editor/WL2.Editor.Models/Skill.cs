@@ -73,7 +73,7 @@ namespace WL2.Editor.Models
             if (nameElement == null)
                 throw new XmlException("Attribute data requires a Key element.");
 
-            return "skill_" + nameElement.Value;
+            return "skill_" + nameElement.Value + ".png";
         }
 
         private SkillCategory ParseCategory(XElement skillData)

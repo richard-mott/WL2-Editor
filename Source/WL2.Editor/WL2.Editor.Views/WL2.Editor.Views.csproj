@@ -13,6 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <ExpressionBlendVersion>12.0.50716.0</ExpressionBlendVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -108,123 +109,123 @@
       <Name>WL2.Editor.ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="Images\attribute_awareness.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\attribute_charisma.png">
+    <Resource Include="Images\attribute_awareness.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\attribute_coordination.png">
+    </Resource>
+    <Resource Include="Images\attribute_charisma.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\attribute_intelligence.png">
+    </Resource>
+    <Resource Include="Images\attribute_coordination.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\attribute_luck.png">
+    </Resource>
+    <Resource Include="Images\attribute_intelligence.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\attribute_speed.png">
+    </Resource>
+    <Resource Include="Images\attribute_luck.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\attribute_strength.png">
+    </Resource>
+    <Resource Include="Images\attribute_speed.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_alarmDisarm.png">
+    </Resource>
+    <Resource Include="Images\attribute_strength.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_animalWhisperer.png">
+    </Resource>
+    <Resource Include="Images\skill_alarmDisarm.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_atWeapons.png">
+    </Resource>
+    <Resource Include="Images\skill_animalWhisperer.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_barter.png">
+    </Resource>
+    <Resource Include="Images\skill_atWeapons.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_bladedWeapons.png">
+    </Resource>
+    <Resource Include="Images\skill_barter.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_bluntWeapons.png">
+    </Resource>
+    <Resource Include="Images\skill_bladedWeapons.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_brawling.png">
+    </Resource>
+    <Resource Include="Images\skill_bluntWeapons.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_bruteForce.png">
+    </Resource>
+    <Resource Include="Images\skill_brawling.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_calvinBackerSkill.png">
+    </Resource>
+    <Resource Include="Images\skill_bruteForce.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_combatShooting.png">
+    </Resource>
+    <Resource Include="Images\skill_calvinBackerSkill.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_computerTech.png">
+    </Resource>
+    <Resource Include="Images\skill_combatShooting.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_demolitions.png">
+    </Resource>
+    <Resource Include="Images\skill_computerTech.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_doctor.png">
+    </Resource>
+    <Resource Include="Images\skill_demolitions.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_energyWeapons.png">
+    </Resource>
+    <Resource Include="Images\skill_doctor.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_fieldMedic.png">
+    </Resource>
+    <Resource Include="Images\skill_energyWeapons.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_handgun.png">
+    </Resource>
+    <Resource Include="Images\skill_fieldMedic.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_intimidate.png">
+    </Resource>
+    <Resource Include="Images\skill_handgun.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_leadership.png">
+    </Resource>
+    <Resource Include="Images\skill_intimidate.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_manipulate.png">
+    </Resource>
+    <Resource Include="Images\skill_leadership.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_mechanicalRepair.png">
+    </Resource>
+    <Resource Include="Images\skill_manipulate.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_outdoorsman.png">
+    </Resource>
+    <Resource Include="Images\skill_mechanicalRepair.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_perception.png">
+    </Resource>
+    <Resource Include="Images\skill_outdoorsman.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_pickLock.png">
+    </Resource>
+    <Resource Include="Images\skill_perception.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_rifle.png">
+    </Resource>
+    <Resource Include="Images\skill_pickLock.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_safecrack.png">
+    </Resource>
+    <Resource Include="Images\skill_rifle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_shotgun.png">
+    </Resource>
+    <Resource Include="Images\skill_safecrack.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_smg.png">
+    </Resource>
+    <Resource Include="Images\skill_shotgun.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_sniperRifle.png">
+    </Resource>
+    <Resource Include="Images\skill_smg.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_spotLie.png">
+    </Resource>
+    <Resource Include="Images\skill_sniperRifle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_toasterRepair.png">
+    </Resource>
+    <Resource Include="Images\skill_spotLie.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\skill_weaponSmith.png">
+    </Resource>
+    <Resource Include="Images\skill_toasterRepair.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </Resource>
+    <Resource Include="Images\skill_weaponSmith.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

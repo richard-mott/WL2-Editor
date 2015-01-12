@@ -19,7 +19,11 @@ namespace WL2.Editor.Models
 
         public IEnumerable<Attribute> Attributes
         {
-            get { return _attributes; }
+            get
+            {
+                return _attributes
+                    .OrderBy(attribute => Statistics.AttributeOrder[attribute.Name]);
+            }
         }
 
         public bool IsDirty
