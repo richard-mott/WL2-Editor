@@ -12,15 +12,22 @@ namespace WL2.Editor.ViewModels
 {
     public class EditorViewModel
     {
-        private readonly ObservableList<Character> _characters = new ObservableList<Character>();
-        private XDocument _document;
-        private string _fileName;
+        private readonly SaveGame _saveGame;
 
         public event Action<object, RequestSaveFileEventArgs> RequestSaveFileEvent;
 
+        public EditorViewModel(SaveGame saveGame)
+        {
+            _saveGame = saveGame;
+        }
+
         public IEnumerable<CharacterViewModel> Characters
         {
-            get { return _characters.Select(character => new CharacterViewModel(character)); }
+            get
+            {
+                return _saveGame.Characters
+                    .Select(character => new CharacterViewModel(character));
+            }
         }
 
         public ICommand OpenFile
@@ -39,7 +46,7 @@ namespace WL2.Editor.ViewModels
 
                         if (requestArgs.IsConfirmed)
                         {
-                            LoadFile(requestArgs.FileName);
+                            _saveGame.Load(requestArgs.FileName);
                         }
                     });
             }
@@ -50,39 +57,9 @@ namespace WL2.Editor.ViewModels
             get
             {
                 return MakeCommand
-                    .When(() => IsFileDirty)
-                    .Do(SaveDocument);
+                    .When(() => _saveGame.IsDirty)
+                    .Do(() => _saveGame.Save());
             }
-        }
-
-        private bool IsFileDirty
-        {
-            get { return _characters.Any(character => character.IsDirty); }
-        }
-
-        private void LoadFile(string fileName)
-        {
-            _document = XDocument.Load(fileName);
-            _fileName = fileName;
-
-            var characters = _document.Descendants("PcData");
-
-            foreach (var characterData in characters)
-            {
-                _characters.Add(new Character(characterData));
-            }
-        }
-
-        private void SaveDocument()
-        {
-            var dirtyCharacters = _characters.Where(character => character.IsDirty);
-
-            foreach (var character in dirtyCharacters)
-            {
-                character.Save();
-            }
-
-            _document.Save(_fileName);
         }
     }
 }
