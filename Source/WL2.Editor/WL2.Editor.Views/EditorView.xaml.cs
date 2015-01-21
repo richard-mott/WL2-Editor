@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Assisticant;
 using Microsoft.Win32;
 using WL2.Editor.ViewModels;
@@ -35,21 +24,24 @@ namespace WL2.Editor.Views
 
         private void EditorView_Loaded(object sender, RoutedEventArgs e)
         {
-            ViewModel.RequestSaveFileEvent += RequestSaveFileEventHandler;
+            ViewModel.RequestSaveFileEvent += OnRequestSaveFile;
+            ViewModel.SaveSuccessfulEvent += OnSaveSuccessful;
         }
 
         private void EditorView_Unloaded(object sender, RoutedEventArgs e)
         {
-            ViewModel.RequestSaveFileEvent -= RequestSaveFileEventHandler;
+            ViewModel.RequestSaveFileEvent -= OnRequestSaveFile;
+            ViewModel.SaveSuccessfulEvent -= OnSaveSuccessful;
         }
 
-        private void RequestSaveFileEventHandler(object sender, RequestSaveFileEventArgs e)
+        private void OnRequestSaveFile(object sender, RequestSaveFileEventArgs e)
         {
-            var openDialog = new OpenFileDialog();
-
-            openDialog.DefaultExt = ".xml";
-            openDialog.Filter = "Wasteland 2 Save Files (*.xml)|*.xml";
-            openDialog.Multiselect = false;
+            var openDialog = new OpenFileDialog
+            {
+                DefaultExt = ".xml",
+                Filter = "Wasteland 2 Save Files (*.xml)|*.xml",
+                Multiselect = false
+            };
 
             if (openDialog.ShowDialog() == true)
             {
@@ -60,6 +52,18 @@ namespace WL2.Editor.Views
             {
                 e.IsConfirmed = false;
             }
+        }
+
+        private void OnSaveSuccessful(object sender, EventArgs e)
+        {
+            var window = Window.GetWindow(this);
+
+            var messageBox = new WL2MessageBox
+            {
+                Owner = window
+            };
+
+            messageBox.ShowDialog();
         }
     }
 }

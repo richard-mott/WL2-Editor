@@ -12,6 +12,7 @@ namespace WL2.Editor.ViewModels
         private readonly SaveGame _saveGame;
 
         public event Action<object, RequestSaveFileEventArgs> RequestSaveFileEvent;
+        public event Action<object, EventArgs> SaveSuccessfulEvent;
 
         public EditorViewModel(SaveGame saveGame)
         {
@@ -105,6 +106,11 @@ namespace WL2.Editor.ViewModels
         private void Save()
         {
             _saveGame.Save();
+
+            if (SaveSuccessfulEvent != null)
+            {
+                SaveSuccessfulEvent(this, null);
+            }
         }
     }
 }

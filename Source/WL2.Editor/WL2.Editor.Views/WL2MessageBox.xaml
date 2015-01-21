@@ -1,0 +1,34 @@
+﻿<Window x:Class="WL2.Editor.Views.WL2MessageBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WL2MessageBox" Height="Auto" Width="300" ResizeMode="NoResize" SizeToContent="WidthAndHeight"
+        WindowStyle="None" WindowStartupLocation="CenterOwner" AllowsTransparency="True"
+        FontFamily="Courier New">
+    <Grid>
+        <Border BorderBrush="#000000" BorderThickness="1">
+            <Border Background="#FF000000" BorderBrush="#88A9B4" BorderThickness="4" Padding="4">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="Game saved successfully." TextWrapping="Wrap"
+                           TextAlignment="Center"
+                           FontSize="18" FontWeight="Bold" Foreground="#FF9635" Width="Auto"
+                           Margin="4 4 4 4" />
+
+                    <Button Grid.Row="1" Grid.Column="1" Margin="4 4 4 4" IsDefault="True" Width="Auto" Click="On_OK_Click" 
+                        FontSize="18" FontWeight="Bold">OK</Button>
+                </Grid>
+            </Border>
+        </Border>
+    </Grid>
+</Window>
